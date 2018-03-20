@@ -10,6 +10,9 @@ export default {
   name: 'App',
   mounted () {
     console.log(this);
+    console.log(this.__proto__);
+    console.log(this.$http);
+    console.log(this.$http.post());
   },
 }
 </script>
