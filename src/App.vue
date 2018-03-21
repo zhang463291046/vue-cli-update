@@ -18,6 +18,9 @@ export default {
     console.log(a)
     console.log(this)
     this.handleQuery();
+    
+    this.formatDate('','yyyy-MM-ss')
+    this.aa();
   },
   methods: {
     handleQuery() {

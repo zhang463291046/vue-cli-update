@@ -8,6 +8,7 @@ import './api'
 import './extend'
 import './filter'
 import './directive'
+import './mixin'
 
 Vue.config.productionTip = false
 
