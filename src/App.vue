@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img src="./assets/logo.png">{{ message | capitalize}}
     <router-view/>
   </div>
 </template>
@@ -8,12 +8,30 @@
 <script>
 export default {
   name: 'App',
-  mounted () {
-    console.log(this);
-    console.log(this.__proto__);
-    console.log(this.$http);
-    console.log(this.$http.post());
+  data(){
+    return {
+      message:'abc'
+    }
   },
+  mounted () {
+    var a =new Date().Format('yyyy-MM-ss')
+    console.log(a)
+    console.log(this)
+    this.handleQuery();
+  },
+  methods: {
+    handleQuery() {
+      this.$http.post(
+        'login/do_login',
+        {
+          username:'18036093000',
+          pwd:'123456'
+        }
+        ).then(res => {
+          console.log('res',res);
+        });
+    },
+  }    
 }
 </script>
 

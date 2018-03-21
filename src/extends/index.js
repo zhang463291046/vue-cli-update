@@ -1,2 +1,0 @@
-require('./DateExtend');
-require('./StringExtends');

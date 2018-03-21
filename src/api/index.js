@@ -3,13 +3,18 @@ import axios from "axios"
 // import qs from 'qs'
 // import {Notification} from 'element-ui'
 
-export default function () {
+//创建请求，公用参数配置
+var http = axios.create({
+  baseURL: 'http://120.24.55.58:8010/index.php',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
+});
 
-  //公用参数配置
-  axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
-  
+//闭包函数自调用
+(function(){
   //添加一个请求拦截器
-  axios.interceptors.request.use(function(config){
+  http.interceptors.request.use(function(config){
     //在请求发出之前的数据进行处理
     var userId = '49b0559c-a383-460f-8428-b9522d05ee41';
     var menuId = '4cf6cafe8aa34e70b17379e27530a7c2';
@@ -31,7 +36,7 @@ export default function () {
   });
   
   //添加一个响应拦截器
-  axios.interceptors.response.use(function(response){
+  http.interceptors.response.use(function(response){
     //在这里对返回的数据进行处理
     const {status, statusText, data} = response;
     // 网络请求不通
@@ -50,7 +55,7 @@ export default function () {
       //   type: 'error'
       // });
     }
-    return response;
+    return data;
   },function(err){
     // Notification({
     //   title: '回调失败',
@@ -61,5 +66,6 @@ export default function () {
   });
 
   //使用axios
-  Vue.prototype.$http = axios;
-}
+  Vue.prototype.$http = http;
+   
+})()
