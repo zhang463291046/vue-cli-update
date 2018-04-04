@@ -9,7 +9,8 @@ import './extend'
 import './filter'
 import './directive'
 import './mixin'
-
+import iview from 'iview'
+Vue.use(iview)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
