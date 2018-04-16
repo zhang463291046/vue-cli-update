@@ -1,18 +1,12 @@
 <template>
-  <div class="main" :class="{shrink: !menuType}">
+  <div class="main">
     <div class="main-header">
-      <!-- <div class="main-logo">
-        <img src="../assets/LOGO1@3x.png" />
-      </div> -->
-      
       <div class="main-right">
         <Poptip trigger="hover" placement="bottom-end" width="100px">
-          <span class="user">{{userInfo.real_name}}</span>
+          <span class="user">管理员</span>
           <div class="tips" slot="content">
-            <div class="tip-item" @click="toSubAccount">子账号管理</div>
-            <div class="tip-item" @click="toAccount">用户信息</div>
-            <div class="tip-item" @click="toResetPsd">修改密码</div>
-            <div class="tip-item" @click="toLogout">退出登录</div>
+            <div class="tip-item">修改密码</div>
+            <div class="tip-item">退出登录</div>
           </div>
         </Poptip>
       </div>
@@ -29,43 +23,21 @@
 </template>
 
 <script>
-  import slideMenu from '../components/slideMenu';
-  import navCrumb from '../components/navCrumb.vue';
-  import cdao from './commonDao';
-  import { mapGetters } from 'vuex';
-
+  import slideMenu from '../components/slideMenu'
+  import { mapGetters } from 'vuex'
   export default {
-    name: '',
     data() {
       return {
-        menuType: true
-      };
-    },
-
-    methods: {
-      handleToggle() {
-        this.menuType = !this.menuType;
-      },
-      toSubAccount() {
-        this.$router.$push({ name: 'subAccount' });
-      },
-      toAccount() {
-        this.$router.$push({ name: 'account' });
-      },
-      toResetPsd() {
-        this.$router.$push({ name: 'resetPsd' });
-      },
-      toLogout() {
-        cdao.login_out();
-      },
-      async loadUser() {
-        const userInfo = await cdao.get_info();
-        this.$store.dispatch('setUserInfoAction', userInfo);
+        
       }
     },
 
+    methods: {
+      
+    },
+
     mounted() {
-      this.loadUser();
+      
     },
 
     computed: {
@@ -73,7 +45,7 @@
     },
 
     components: {
-      slideMenu, navCrumb
+      slideMenu
     }
   };
 </script>

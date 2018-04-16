@@ -45,12 +45,18 @@
           password: '',
           remember: true
         },
+        rules: {
+
+        }
       }
     },
 
     methods: {
       doLogin () {
-        
+        // this.$http.post('/ray-test/get-session',{}).then( res => {
+
+        // })
+        this.$router.push({'name':'home-index'});
       }
     },
 
