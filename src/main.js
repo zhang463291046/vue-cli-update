@@ -9,7 +9,7 @@ import './extend'
 import './filter'
 import './directive'
 import './mixin'
-import './css'
+import './style'
 import iview from 'iview'
 Vue.use(iview)
 Vue.config.productionTip = false
