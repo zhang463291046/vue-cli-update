@@ -30,6 +30,7 @@ npm test
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## 目录结构
+```
 ├── build           		 // 项目打包基本配置
 ├── config           		 // 项目环境基本配置
 ├── dist                     // 运行npm run build指令,生产静态文件
@@ -63,3 +64,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ├── package-lock.json        // 第三方依赖包锁定安装
 ├── package.json             // 第三方依赖包安装
 ├── README.md                // 说明文档		
+```
