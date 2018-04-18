@@ -2,7 +2,7 @@
   <div class="slide">
     <Menu accordion :active-name="activeName" width="auto" @on-select="changeMenu">
       <div v-for="(item,index) in menuList" :key="index">
-        <MenuItem v-if="item.noChildren" :name="item.toName">
+        <MenuItem v-if="!item.hasChildren" :name="item.toName">
           <Icon :type="item.icon"></Icon>
           {{ item.title }}
         </MenuItem>
@@ -29,8 +29,8 @@
       }
     },
     methods: {
-      changeMenu(){
-
+      changeMenu(name){
+        this.$router.push({name});
       }
     },
     watch: {
@@ -41,12 +41,12 @@
       
     },
     mounted() {
-     console.log(pagesRouter)
+
     }
   };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .slide{
     position: fixed;
     width: 200px;

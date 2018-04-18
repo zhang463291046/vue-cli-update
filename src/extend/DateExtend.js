@@ -1,5 +1,20 @@
-/* eslint-disable */
+/* 
+*时间日期扩展方法 
+*@方式一,直接扩展时间日期方法,Date.console()调用
+*@方式二,扩展时间日期原型链方法,原型链中this为传入数据,通过param.console()调用
+*@例子:
+*Date.console([1,2,3]);
+*[1,2,3].console('参数');
+*/
+Date.console = function(res) {
+  console.log(res);
+};
+Date.prototype.console = function(res) {
+  console.log(this);
+  console.log(res);
+};
 
+// 时间格式转换
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
 // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
 // 例子：
