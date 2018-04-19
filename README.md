@@ -76,3 +76,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 | 样式支持less,sass,scss | less和less-loader支持less;node-sass和sass-loader支持sass,scss|  |
 | 路由配置 				 | vue-router 				| 			  |
 | 状态管理树 			 | vuex 					| 			  |
+
+## coding.net和github设置同步更新
