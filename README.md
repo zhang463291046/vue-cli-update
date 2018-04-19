@@ -68,12 +68,13 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## 技术说明文档
 ```
-| 技术需求 | 依赖包 | 备注 |
+| 描述    | 依赖包 | 备注 |
+|---------|--------|-------------|
 | 网络请求 | axios |  |
 | websocket通讯 | mqtt | |
 | 基础UI框架 | iview |  |
 | 报表图形统计 | vue-echarts |  |
-| 样式支持less,sass,scss|less和less-loader支持less;node-sass和sass-loader支持sass,scss|  |
+| 样式支持less,sass,scss | less和less-loader支持less;node-sass和sass-loader支持sass,scss|  |
 | 路由配置 | vue-router | |
 | 状态管理树 | vuex | |
 ```
