@@ -1,32 +1,23 @@
-const state = {
-  userInfo: {}
-}
-
-const actions = {
-  setUserInfoAction({ commit }, data) {
-    commit('setUserInfoMutation', data);
-  },
-  setUserRealName({ commit }, name) {
-    commit('setUserNameMutation', name);
-  }
-}
-
-const mutations = {
-  setUserInfoMutation(state, data) {
-    state.userInfo = data;
-  },
-  setUserNameMutation(state, name) {
-    state.userInfo = Object.assign({}, state.userInfo, { real_name: name });
-  }
-}
-
-const getters = {
-  userInfo: state => state.userInfo
-}
-
+/*
+*用户信息状态树
+*/
 export default{
-  state,
-  actions,
-  mutations,
-  getters
+  state: {
+    userInfo: {
+      name: 'vux'
+    }
+  },
+  actions: {
+    setUserInfoAction({ commit }, data) {
+      commit('setUserInfoMutation', data);
+    }
+  },
+  mutations: {
+    setUserInfoMutation(state, data) {
+      state.userInfo = Object.assign({}, state.userInfo);
+    }
+  },
+  getters: {
+    userInfo: state => state.userInfo
+  }
 }

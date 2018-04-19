@@ -39,7 +39,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 │   ├── ajaxAPI              // 自定义API请求
 │   ├── api                  // 第三方API请求
 │   ├── assets               // 图片资源
-│   ├── commom               // 公共JS方法
 │   ├── components           // 自定义组件
 │   ├── directive            // 自定义指令
 │   ├── extend               // 扩展函数
@@ -50,6 +49,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 │   ├── router            	 // 路由配置
 │   ├── store            	 // 状态管理树vuex
 │   ├── style            	 // 样式
+│   ├── util                 // 公共JS方法
 │   ├── APP.vue              // 单页面的入口root vue
 │   └── main.js              // 单页面的入口js,依赖注入应用
 ├── static                   // 静态文件目录,不被编译

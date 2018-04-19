@@ -13,3 +13,43 @@ Object.console = function(res) {
 //   console.log(this);
 //   console.log(res);
 // };
+
+// 对象的深拷贝问题
+function deepCopy(p, c){
+  var c = c || {}
+  for(var i in p){
+    if(typeof p[i] === 'object'){
+      c[i] = (p[i].constructor === Array) ? [] : {}
+      deepCopy(p[i], c[i])
+    }else{
+      c[i] = p[i]
+    }
+  }
+  return c
+}
+// 对象的深拷贝问题
+function deepCopy2(p, c){
+  var c = c || {}
+  c=JSON.parse(JSON.stringfy(p))
+  return c
+}
+// 对象的深拷贝问题
+function copyObject(orig){
+  var copy = Object.create(Object.getPrototypeOf(orig))
+  copyOwnPropertiesFrom(copy, orig)
+  return copy
+}
+
+function copyOwnPropertiesFrom(target, source){
+  Object
+    .getOwnPropertyNames(source)
+    .forEach(function(val){
+      var desc = Object.getOwnPropertyDescriptor(source, val)
+      if(typeof desc.value === 'object'){
+        target[val] = copyObject(source[val])
+      }else{
+        Object.defineProperty(target, val, desc)
+      }
+    })
+    return target
+}

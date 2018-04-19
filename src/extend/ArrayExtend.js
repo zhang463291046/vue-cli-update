@@ -13,3 +13,15 @@ Array.prototype.console = function(res) {
   console.log(this);
   console.log(res);
 };
+// 数组的去重
+function deletMany(arr){
+  var obj = {}
+  var newArr = []
+  for(var i=0; i<arr.length-1;i++){
+    if(!obj[arr[i]]){
+      newArr.push(arr[i])
+      obj[arr[i]] = 1
+    }
+  }
+  return newArr
+}

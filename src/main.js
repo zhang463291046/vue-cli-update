@@ -3,17 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import iview from 'iview'
-import components from './components'
 import router from './router'
 import store from './store'
 import './api'
+import './components'
 import './directive'
 import './extend'
 import './filter'
 import './mixin'
 import './style'
 Vue.use(iview)
-Vue.use(components)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

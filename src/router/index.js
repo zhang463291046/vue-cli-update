@@ -57,6 +57,12 @@ export const pagesRouter = [
         name: 'home2-index',
         title: '结构2-1',
         component: resolve => require(['../pages/home2/index'], resolve)
+      },
+      {
+        path: 'index2',
+        name: 'home2-index2',
+        title: '结构2-2',
+        component: resolve => require(['../pages/home2/index2'], resolve)
       }
     ]
   },

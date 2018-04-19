@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1>子页面</h1>
-    <dtButton></dtButton>
-    <dt-button></dt-button>
+    <h1>子页面1</h1>
   </div>
 </template>
 <script>
@@ -20,9 +18,5 @@
     methods: {
       
     },
-
-    components: {
-
-    }
   };
 </script>
