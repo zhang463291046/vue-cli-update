@@ -43,7 +43,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 │   ├── directive            // 自定义指令
 │   ├── extend               // 扩展函数
 │   ├── filter               // 自定义过滤器
-│   ├── minxin               // 工具函数
+│   ├── mixin                // 工具函数
 │   ├── pages            	 // 生产页面结构目录
 │   ├── plugin           	 // 第三方插件库JS
 │   ├── router            	 // 路由配置
@@ -64,4 +64,16 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ├── package-lock.json        // 第三方依赖包锁定安装
 ├── package.json             // 第三方依赖包安装
 ├── README.md                // 说明文档		
+```
+
+## 技术说明文档
+```
+| 技术需求 | 依赖包 | 备注 |
+| 网络请求 | axios |  |
+| websocket通讯 | mqtt | |
+| 基础UI框架 | iview |  |
+| 报表图形统计 | vue-echarts |  |
+| 样式支持less,sass,scss|less和less-loader支持less;node-sass和sass-loader支持sass,scss|  |
+| 路由配置 | vue-router | |
+| 状态管理树 | vuex | |
 ```
