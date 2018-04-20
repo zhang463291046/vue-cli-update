@@ -6,7 +6,7 @@ import axios from "axios"
 import {Notice} from 'iview'
 // import qs from 'qs'
 var http = axios.create({
-  baseURL: 'http://120.24.55.58:8010/index.php',
+  baseURL: '',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   }

@@ -12,6 +12,7 @@ import './extend'
 import './filter'
 import './mixin'
 import './plugin'
+import i18n from './plugin/vue-i18n'
 import './style'
 import './util'
 Vue.use(iview)
@@ -21,6 +22,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  i18n,
   store,
   components: { App },
   template: '<App/>'

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>子页面1</h1>
+    <h1>{{$t("home.title")}}</h1>
     <dtButton>我是按钮</dtButton>
     <span @click="show=true">侧边栏</span>
     <dtSlidePage
@@ -20,7 +20,7 @@
     },
 
     mounted () {
-      
+      console.log(this)
     },
 
     methods: {

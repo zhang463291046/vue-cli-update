@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>子页面2</h1>
+    <h1>{{$t("home2.title")}}</h1>
   </div>
 </template>
 <script>

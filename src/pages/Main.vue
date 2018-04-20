@@ -2,6 +2,15 @@
   <div class="main">
     <div class="main-header">
       <div class="main-title">vue-cli管理系统</div>
+      <div class="main-left">
+        <Poptip trigger="hover" placement="bottom" width="100px">
+          <span class="user">{{lang}}</span>
+          <div class="tips" slot="content">
+            <div class="tip-item" @click="changeLocale('zh','中文')">中文</div>
+            <div class="tip-item" @click="changeLocale('en','English')">English</div>
+          </div>
+        </Poptip>
+      </div>
       <div class="main-right">
         <Poptip trigger="hover" placement="bottom-end" width="100px">
           <span class="user">{{userInfo.name}}</span>
@@ -32,7 +41,7 @@
     },
     data() {
       return {
-        
+        lang:'中文'
       }
     },
     computed: {
@@ -42,6 +51,10 @@
       
     },
     methods: {
+      changeLocale(locale,lang){
+        this.$i18n.locale = locale;
+        this.lang = lang;
+      },
       handleLogout(){
         this.$router.push({'name':'login'});
         console.log('---退出登录---');
@@ -99,7 +112,6 @@
         }
       }
     }
-
     .main-title{
       position: absolute;
       left: 50%;
@@ -108,7 +120,15 @@
       color: #FFF;
       font-size: 20px;
     }
-
+    .main-left {
+      position: absolute;
+      top: 20px;
+      right: 150px;
+      height: 20px;
+      line-height: 20px;
+      color: #FFF;
+      font-size: 14px;
+    }
     .main-right {
       position: absolute;
       top: 20px;

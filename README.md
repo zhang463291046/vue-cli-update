@@ -67,15 +67,30 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ```
 
 ## 技术说明文档
-| 描述    				 | 依赖包 					| 备注 	      |
-|----------------------- |--------------------------|-------------|
-| 网络请求 				 | axios 					|暂无         |
-| websocket通讯 		 | mqtt 					|暂无         |
-| 基础UI框架 			 | iview 					|暂无         |
-| 报表图形统计 			 | vue-echarts 				|暂无         |
-| 样式支持less,sass,scss | less和less-loader支持less;node-sass和sass-loader支持sass,scss|暂无         |
-| 路由配置 				 | vue-router 				|暂无         |
-| 状态管理树 			 | vuex 					|暂无         |
+| 描述                       | 依赖包                   | 备注                      |
+|----------------------------|--------------------------|---------------------------|
+| 网络请求                   | axios                    |暂无                       |
+| websocket通讯              | mqtt                     |暂无                       |
+| 基础UI框架                 | iview                    |暂无                       |
+| 报表图形统计               | vue-echarts              |暂无                       |
+| 样式支持less,sass,scss     | less和less-loader支持less;node-sass和sass-loader支持sass,scss|暂无         |
+| 路由配置                   | vue-router               |暂无                       |
+| 状态管理树                 | vuex                     |暂无                       |
+| 国际化语言库               | vue-i18n                 |暂无                       |
+
+
+## 开发常用包推荐
+| 描述                       | 依赖包                   |备注                       |
+|----------------------------|--------------------------|---------------------------|
+| 网络请求                   | axios                    |暂无                       |
+| websocket通讯              | mqtt                     |暂无                       |
+| 基础UI框架                 | element,iview            |暂无                       |
+| 报表图形统计               | vue-echarts              |暂无                       |
+| 样式支持less,sass,scss     | less和less-loader支持less;node-sass和sass-loader支持sass,scss|暂无         |
+| 路由配置                   | vue-router               |暂无                       |
+| 状态管理树                 | vuex                     |暂无                       |
+| 国际化语言库               | vue-i18n                 |暂无                       |
+| 货币转换                   | accounting               |暂无                       |
 
 ## 欢迎有兴趣的小伙伴给点提议,在Issues中留言.后期会扩展组件和JS
 
