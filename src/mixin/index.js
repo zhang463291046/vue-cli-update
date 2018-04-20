@@ -3,9 +3,8 @@ import Vue from 'vue'
 
 var mixin = {  
   methods: {
-    //时间戳转成日期
     formatDate(){
-      console.log('11')
+      console.log('---mixin---','混入对象')
     },
   }
 }

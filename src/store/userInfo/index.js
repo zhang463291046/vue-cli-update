@@ -4,7 +4,7 @@
 export default{
   state: {
     userInfo: {
-      name: 'vux'
+      name: 'vux管理员'
     }
   },
   actions: {

@@ -1,7 +1,8 @@
 import Vue from "vue"
 import axios from "axios"
+import {Notice} from 'iview'
 // import qs from 'qs'
-// import {Notification} from 'element-ui'
+
 
 //创建请求，公用参数配置
 var http = axios.create({
@@ -27,11 +28,11 @@ var http = axios.create({
     // config.data = qs.stringify(config.data);
     return config;
   },function(err){
-    // Notification({
-    //   title: '请求失败',
-    //   message: err,
-    //   type: 'error'
-    // });
+    Notice({
+      title: '请求失败',
+      message: err,
+      type: 'error'
+    });
     return err;
   });
   
@@ -41,27 +42,27 @@ var http = axios.create({
     const {status, statusText, data} = response;
     // 网络请求不通
     if(status != 200){
-      // Notification({
-      //   title: '网络错误！',
-      //   message: statusText,
-      //   type: 'error'
-      // });
+      Notice({
+        title: '网络错误！',
+        message: statusText,
+        type: 'error'
+      });
     }
     // 接口出错
     if(data.code!=0){
-      // Notification({
-      //   title: '接口错误！',
-      //   message: data.msg,
-      //   type: 'error'
-      // });
+      Notice({
+        title: '接口错误！',
+        message: data.msg,
+        type: 'error'
+      });
     }
     return data;
   },function(err){
-    // Notification({
-    //   title: '回调失败',
-    //   message: err,
-    //   type: 'error'
-    // });
+    Notice({
+      title: '回调失败',
+      message: err,
+      type: 'error'
+    });
     return err;
   });
 

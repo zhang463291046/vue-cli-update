@@ -1,9 +1,10 @@
 <template>
   <div class="main">
     <div class="main-header">
+      <div class="main-title">vue-cli管理系统</div>
       <div class="main-right">
         <Poptip trigger="hover" placement="bottom-end" width="100px">
-          <span class="user">管理员</span>
+          <span class="user">{{userInfo.name}}</span>
           <div class="tips" slot="content">
             <div class="tip-item">修改密码</div>
             <div class="tip-item">退出登录</div>
@@ -15,7 +16,7 @@
       <slideMenu></slideMenu>
       <div class="panel">
         <transition name="singlePage">
-          <router-view class="child-view"></router-view>
+          <router-view></router-view>
         </transition>
       </div>
     </div>
@@ -80,17 +81,6 @@
     transition: left .3s;
   }
 
-  .shrink{
-    .slide{
-      width: 60px;
-      overflow-x: hidden;
-    }
-
-    .panel{
-      left: 60px;
-    }
-  }
-
   .main-header{
     box-sizing: border-box;
     position: fixed;
@@ -102,7 +92,6 @@
     background: #2d8cf0;
     .main-icon{
       display: inline-block;
-
       .ivu-btn-text{
         color: #FFF;
         &:hover{

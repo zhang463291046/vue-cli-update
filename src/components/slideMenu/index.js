@@ -1,3 +1,3 @@
-import dtButton from './dtButton';
-export default dtButton;
+import SlideMenu from './slideMenu';
+export default SlideMenu;
 

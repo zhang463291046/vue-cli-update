@@ -1,3 +1,3 @@
-import Button from './dtButton';
+import Button from './button';
 export default Button;
 

@@ -1,3 +1,3 @@
-import dtButton from './dtButton';
-export default dtButton;
+import SlidePage from './slidePage';
+export default SlidePage;
 
