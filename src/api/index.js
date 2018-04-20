@@ -1,10 +1,10 @@
+/*
+*网络请求
+*/
 import Vue from "vue"
 import axios from "axios"
 import {Notice} from 'iview'
 // import qs from 'qs'
-
-
-//创建请求，公用参数配置
 var http = axios.create({
   baseURL: 'http://120.24.55.58:8010/index.php',
   headers: {

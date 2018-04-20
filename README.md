@@ -77,6 +77,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 | 路由配置 				 | vue-router 				|暂无         |
 | 状态管理树 			 | vuex 					|暂无         |
 
+## 欢迎有兴趣的小伙伴给点提议,在Issues中留言.后期会扩展组件和JS
+
 ## TIP: coding.net和github设置同步更新
 ```
 $git remote -v #查看当前远端仓库
