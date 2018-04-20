@@ -78,3 +78,12 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 | 状态管理树 			 | vuex 					| 			  |
 
 ## coding.net和github设置同步更新
+```
+$git remote -v #查看当前远端仓库
+origin  git@git.coding.net:user/project.git (fetch)
+origin  git@git.coding.net:user/project.git (push)
+
+$git remote add both git@git.coding.net:user/project.git #添加一个名为 both 的远端
+
+$git push both master #提交both远端master主干
+```
