@@ -28,10 +28,9 @@ var http = axios.create({
     // config.data = qs.stringify(config.data);
     return config;
   },function(err){
-    Notice({
+    Notice.error({
       title: '请求失败',
-      message: err,
-      type: 'error'
+      desc: err
     });
     return err;
   });
@@ -42,26 +41,23 @@ var http = axios.create({
     const {status, statusText, data} = response;
     // 网络请求不通
     if(status != 200){
-      Notice({
+      Notice.error({
         title: '网络错误！',
-        message: statusText,
-        type: 'error'
+        desc: statusText
       });
     }
     // 接口出错
     if(data.code!=0){
-      Notice({
+      Notice.error({
         title: '接口错误！',
-        message: data.msg,
-        type: 'error'
+        desc: data.msg
       });
     }
     return data;
   },function(err){
-    Notice({
+    Notice.error({
       title: '回调失败',
-      message: err,
-      type: 'error'
+      desc: err
     });
     return err;
   });

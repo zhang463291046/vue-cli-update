@@ -5,7 +5,8 @@
     <span @click="show=true">侧边栏</span>
     <dtSlidePage
       v-model = "show"
-      title = "我是侧边栏">
+      title = "我是侧边栏"
+      @on-ok = "handleOk">
       <h1>恭喜你看见我啦</h1>
     </dtSlidePage>
   </div>
@@ -23,7 +24,9 @@
     },
 
     methods: {
-      
+      handleOk(){
+        console.log('---侧边栏点击保存---')
+      }
     },
   };
 </script>

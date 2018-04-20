@@ -53,7 +53,7 @@
 
     methods: {
       doLogin () {
-        // this.$http.post('/ray-test/get-session',{}).then( res => {
+        // this.$http.post('/login/do_login',{}).then( res => {
 
         // })
         this.$router.push({'name':'home-index'});

@@ -7,7 +7,7 @@
           <span class="user">{{userInfo.name}}</span>
           <div class="tips" slot="content">
             <div class="tip-item">修改密码</div>
-            <div class="tip-item">退出登录</div>
+            <div class="tip-item" @click="handleLogout">退出登录</div>
           </div>
         </Poptip>
       </div>
@@ -27,27 +27,27 @@
   import slideMenu from '../components/slideMenu'
   import { mapGetters } from 'vuex'
   export default {
+    components: {
+      slideMenu
+    },
     data() {
       return {
         
       }
     },
-
-    methods: {
-      
-    },
-
-    mounted() {
-      
-    },
-
     computed: {
       ...mapGetters(['userInfo'])
     },
-
-    components: {
-      slideMenu
-    }
+    mounted() {
+      
+    },
+    methods: {
+      handleLogout(){
+        this.$router.push({'name':'login'});
+        console.log('---退出登录---');
+      }
+    },
+    
   };
 </script>
 

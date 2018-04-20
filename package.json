@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "iview": "2.11.0",
+    "mqtt": "2.17.0",
     "vue": "2.5.2",
     "vue-echarts": "3.0.5",
     "vue-router": "3.0.1",
