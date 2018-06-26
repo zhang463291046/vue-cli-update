@@ -11,7 +11,7 @@ export const baseRouter = [
     path: '/',
     name: 'login',
     title: '登录',
-    component: resolve => { require(['../pages/login/login.vue'], resolve); }
+    component: resolve => require(['../pages/login/login.vue'], resolve)
   }
 ];
 
@@ -61,10 +61,38 @@ export const pagesRouter = [
       {
         path: 'index2',
         name: 'home2-index2',
-        title: '结构2-2',
+        title: 'aes加密和解密',
         component: resolve => require(['../pages/home2/index2'], resolve)
-      }
+      },
+      {
+        path: 'index3',
+        name: 'home2-index3',
+        title: '城市联级',
+        component: resolve => require(['../pages/home2/index3'], resolve)
+      },
     ]
+  },
+];
+
+//网络错误路由403,404,500等等页面
+export const errRouter = [
+  {
+    path: '/*',
+    name: 'error-404',
+    title: '404-页面不存在',
+    component: resolve => require(['../pages/errorPage/404.vue'], resolve)
+  },
+  {
+    path: '/403',
+    name: 'error-403',
+    title: '403-权限不足',
+    component: resolve => require(['../pages/errorPage/403.vue'], resolve)
+  },
+  {
+    path: '/500',
+    name: 'error-500',
+    title: '500-服务端错误',
+    component: resolve => require(['../pages/errorPage/500.vue'], resolve)
   },
 ];
 
@@ -73,5 +101,6 @@ export default new Router({
   routes: [
     ...baseRouter,
     ...pagesRouter,
+    ...errRouter,
   ]
 })

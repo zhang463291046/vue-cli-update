@@ -4,9 +4,11 @@
 import Vue from "vue"
 import axios from "axios"
 import {Notice} from 'iview'
-// import qs from 'qs'
+import qs from 'qs'
+// 基础URL
+export const baseUrl = process.env.NODE_ENV=="production"?"/index.php/":"http://120.24.55.58:8117/index.php/";
 var http = axios.create({
-  baseURL: '',
+  baseURL: baseUrl,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   }
@@ -25,7 +27,7 @@ var http = axios.create({
       ...config.data
     };
     //数据格式用form data
-    // config.data = qs.stringify(config.data);
+    config.data = qs.stringify(config.data);
     return config;
   },function(err){
     Notice.error({

@@ -5,7 +5,8 @@ import Vue from "vue"
 import axios from "axios"
 import {Notice, Message} from 'element-ui'
 import qs from 'qs'
-export const baseUrl = 'http://120.24.55.58:8038';
+// 基础URL
+export const baseUrl = process.env.NODE_ENV=="production"?"/index.php/":"http://120.24.55.58:8117/index.php/";
 var http = axios.create({
   baseURL: baseUrl,
   headers: {

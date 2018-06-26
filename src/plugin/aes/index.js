@@ -9,8 +9,11 @@
 import GibberishAES from './gibberish-aes';
 // const key  = '20180514';// 秘钥字符串
 const key = [105, 97, 109, 103, 97, 121, 33, 33]; // 秘钥数组
-const stringKey = key => key.map(v => String.fromCharCode(v)).join(''); // ASCII码 => 字符串
+const stringKey = key => key.map(v => String.fromCharCode(v)).join(''); // ASCII码 => 字符串iamgay!!
 
+/**
+ * trueKey秘钥
+ */
 var trueKey;
 if (typeof key === 'string') {
   trueKey = key; // aesKey是字符串

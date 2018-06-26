@@ -15,15 +15,17 @@ import './plugin'
 import i18n from './plugin/vue-i18n'
 import './style'
 import './util'
+import iviewArea from 'iview-area'
 Vue.use(iview)
+Vue.use(iviewArea)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  i18n,
   store,
+  i18n,
   components: { App },
   template: '<App/>'
 })
