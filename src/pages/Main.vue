@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="main-body">
-      <slideMenu></slideMenu>
+      <dt-slideMenu/>
       <div class="panel">
         <transition name="singlePage">
           <router-view></router-view>
@@ -33,11 +33,10 @@
 </template>
 
 <script>
-  import slideMenu from '../components/slideMenu'
   import { mapGetters } from 'vuex'
   export default {
     components: {
-      slideMenu
+    
     },
     data() {
       return {

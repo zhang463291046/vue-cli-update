@@ -31,7 +31,7 @@ export const pagesRouter = [
     path: '/home',
     name: 'home',
     icon: 'ios-home',
-    title: '目录结构1',
+    title: '单菜单',
     toName: 'home-index',
     component: Main,
     hasChildren: false,
@@ -47,7 +47,7 @@ export const pagesRouter = [
     path: '/home2',
     name: 'home2',
     icon: 'ios-gear',
-    title: '目录结构2',
+    title: '多菜单',
     toName: 'home2-index',
     component: Main,
     hasChildren: true,
@@ -55,7 +55,7 @@ export const pagesRouter = [
       {
         path: 'index',
         name: 'home2-index',
-        title: '结构2-1',
+        title: 'mockjs模拟数据',
         component: resolve => require(['../pages/home2/index'], resolve)
       },
       {
@@ -69,6 +69,47 @@ export const pagesRouter = [
         name: 'home2-index3',
         title: '城市联级',
         component: resolve => require(['../pages/home2/index3'], resolve)
+      },
+      {
+        path: 'index4',
+        name: 'home2-index4',
+        title: '多语言版',
+        component: resolve => require(['../pages/home2/index4'], resolve)
+      },
+    ]
+  },
+  {
+    path: '/home3',
+    name: 'home3',
+    icon: 'ios-gear',
+    title: '常用组件封装',
+    toName: 'home3-index',
+    component: Main,
+    hasChildren: true,
+    children: [
+      {
+        path: 'index',
+        name: 'home3-index',
+        title: 'mockjs模拟数据',
+        component: resolve => require(['../pages/home3/index'], resolve)
+      },
+      {
+        path: 'index3',
+        name: 'home3-index3',
+        title: 'aes加密和解密',
+        component: resolve => require(['../pages/home3/index2'], resolve)
+      },
+      {
+        path: 'index3',
+        name: 'home3-index3',
+        title: '城市联级',
+        component: resolve => require(['../pages/home3/index3'], resolve)
+      },
+      {
+        path: 'index4',
+        name: 'home3-index4',
+        title: '多语言版',
+        component: resolve => require(['../pages/home3/index4'], resolve)
       },
     ]
   },

@@ -1,9 +1,8 @@
 module.exports = {
   home: {
-    title: 'Page1'
+    title: 'Using vue-i18n to support multi language version, language configuration in src/plugin/vue-i18n'
   },
   home2: {
-    title: 'Page2',
-    title2: 'Page2-2',
+    title: '',
   }
 }

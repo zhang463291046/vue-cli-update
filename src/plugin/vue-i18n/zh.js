@@ -1,9 +1,8 @@
 module.exports = {
   home: {
-    title: '子页面1'
+    title: '采用vue-i18n支持多语言版,在src/plugin/vue-i18n中语言配置'
   },
   home2: {
-    title: '子页面2',
-    title2: '子页面2-2',
+    title: '',
   }
 }

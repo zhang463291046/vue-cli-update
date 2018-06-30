@@ -70,6 +70,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 | 描述                       | 依赖包                   | 备注                      |
 |----------------------------|--------------------------|---------------------------|
 | 网络请求                   | axios                    |暂无                       |
+| 模拟数据请求               | mock                     |暂无                       |
 | websocket通讯              | mqtt                     |暂无                       |
 | 基础UI框架                 | iview                    |暂无                       |
 | 报表图形统计               | vue-echarts              |暂无                       |
