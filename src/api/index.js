@@ -5,6 +5,8 @@ import Vue from "vue"
 import axios from "axios"
 import {Notice} from 'iview'
 import qs from 'qs'
+// 模拟后台接口数据,若不需要,请注释
+import './mock.js'
 // 基础URL
 const baseUrl = process.env.NODE_ENV=="production"?"/index.php/":"/index.php/";
 var http = axios.create({

@@ -113,7 +113,6 @@
         this.$http.post(this.currUrl, param).then(res=>{
           this.loading = false;
           this.arrList = res.data.list;
-          this.page.currCurrent = Number(res.data.page);
           this.page.currTotal = Number(res.data.total);
         })
       },

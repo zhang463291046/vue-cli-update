@@ -6,11 +6,11 @@ import Vue from 'vue'
 /* 
 *手动加载定义组件
 */
-// import Button from './button'
-// import SlidePage from './slidePage'
+// import button from './button'
+// import slidePage from './slidePage'
 // const object = {
-//   dt-button: Button,
-//   dt-slidePage: SlidePage
+//   button,
+//   slidePage
 // };
 
 /* 
@@ -19,10 +19,11 @@ import Vue from 'vue'
 const object = {};
 const requireComponent = require.context('./', true, /\/\w+\/\w+\.vue$/);
 requireComponent.keys().forEach(tpl => {
-  const key = 'dt-' + tpl.replace(/.+\/(\w+)\.vue$/, '$1');
+  const key = tpl.replace(/.+\/(\w+)\.vue$/, '$1');
   object[key] = requireComponent(tpl).default;
 });
 
 Object.keys(object).forEach(key => {
-	Vue.component(key, object[key]);
+	console.log('自定义组件','dt-' + key);
+	Vue.component('dt-' + key, object[key]);
 });
