@@ -15,13 +15,13 @@ var mixin = {
   	handleSearch() {
 	    this.params = Object.assign({}, this.params);
 	  },
-  	//删除某条数据
-  	handleRemove(url,itemId) {
-	    this.$http.post(url, {id: itemId}).then(res=>{
-	      this.$Message.success('删除成功');
-	      this.handleSearch();
-	    })
-	  },
+  	//删除数据,单条或者多条数据
+    handleRemove(url,params={}) {
+      this.$http.post(url, params).then(res=>{
+        this.$Message.success('删除成功');
+        this.handleSearch();
+      })
+    },
     formatDate(){
       console.log('---mixin---','混入对象')
     },

@@ -1,7 +1,7 @@
-// 配置select列表
+// 配置select列表,将会生成对应的过滤器name + Filter
 
 /**
-* 设备类型
+* 配置项1
 */
 export const deviceType=[
   {value: '1',label: '条件1'},
@@ -12,10 +12,12 @@ export const deviceType=[
   {value: '6',label: '条件6'},
   {value: '7',label: '条件7'},
   {value: '8',label: '条件8'},
+  {value: '9',label: '条件9'},
+  {value: '10',label: '条件10'},
 ]
 
 /**
-* 设备型号
+* 配置项2
 */
 export const deviceModel=[
   {value: '1',label: '条件1'},

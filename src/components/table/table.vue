@@ -1,11 +1,11 @@
 <template>
- <div class="table-wrap" ref="ref">
+ <div class="table-wrap">
    <Table
      ref="table"
      :data="arrList"
      :columns="currColumns"
-     no-data-text="暂时没有数据"
      :loading="loading"
+     no-data-text="暂时没有数据"
      @on-selection-change="handleSelectChange"
    >
    </Table>
@@ -58,7 +58,7 @@
           currCurrent: 1,
           currPageSize: 10,
         },
-        selection: {}
+        selection: []
       };
     },
     watch: {
@@ -75,39 +75,8 @@
       this.getList();
     },
     methods: {
-      handleSelectChange(selection) {
-        this.selection[this.currCurrent] = selection;
-        this.$emit('on-select-change', this.selection);
-      },
-      selectionWrap(data) {
-        const selection = this.selection[this.currCurrent];
-        if (selection) {
-          // 已经选中了某也
-          const keys = selection.map((item) => item[this.primaryKey]);
-          data.forEach((item) => {
-            const key = item[this.primaryKey];
-            if (keys.includes(key)) {
-              item._checked = true;
-            } else {
-              item._checked = false;
-            }
-          });
-        } else {
-          // const newSelection = data.filter((item) => {
-          //   if (item._checked) {
-          //     return item;
-          //   }
-          // });
-          const newSelection = data;
-          this.handleSelectChange(newSelection);
-        }
-        return data;
-      },
-      pageChange(num) {
-        this.page.currCurrent = num;
-        this.getList();
-      },
       getList() {
+        this.selection = [];
         this.loading = true;
         var param = Object.assign({}, this.currParams, {page: this.page.currCurrent});
         this.$http.post(this.currUrl, param).then(res=>{
@@ -116,18 +85,27 @@
           this.page.currTotal = Number(res.data.total);
         })
       },
+      pageChange(num) {
+        this.page.currCurrent = num;
+        this.getList();
+      },
+      handleSelectChange(selection) {
+        this.selection = selection;
+      },
+      // 返回选中数组,默认是id
+      getSelect(key='id'){
+        return this.selection.map((item) => item[key]);
+      },
     },
   };
 </script>
 
 <style lang="less" scoped>
   .table-wrap{
+    padding: 0px 20px;
     .table-page{
       text-align: right;
-      margin-top: 20px;
+      padding: 20px 0px;
     }
   }
-  // .ivu-table-wrapper{
-  //   border: none;
-  // }
 </style>

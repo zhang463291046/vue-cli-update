@@ -1,19 +1,37 @@
 /*全局基础样式表*/
 @import './config.less';
+/*----------容器页面部分----------------*/
+.page{
+	background: #fff;
+	padding: 20px;
+}
 
 /*----------列表头部搜索部分----------------*/
 .dt-search-top {
-  margin-bottom: 5px;
+	height: 35px;
+	line-height: 35px;
+	margin: 10px 20px;
 	.dt-search-cell {
-    height: 35px;
-    line-height: 35px;
-    padding: 0px 10px 0px 0px;
-    display: inline-block;
+		height: 35px;
+		line-height: 35px;
+		padding: 0px 20px 0px 0px;
+		display: inline-block;
+	}
+	.dt-search-operation {
+		height: 35px;
+		line-height: 35px;
+		float: right;
 	}
 	.dt-search-input{
 		width: 200px;
+		margin-left: 10px;
 	}
 	.dt-search-select{
 		width: 200px;
+		margin-left: 10px;
+	}
+	.dt-search-date{
+		width: 200px;
+		margin-left: 10px;
 	}
 }

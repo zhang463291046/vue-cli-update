@@ -34,6 +34,7 @@ mock('/index.php/device/get_list', {
         'key4': natural(0, 100),
         'key5': natural(0, 100),
         'key6': natural(0, 100),
+        'key7': /\d{1}/,
       }
     ],
     'page': 1,
