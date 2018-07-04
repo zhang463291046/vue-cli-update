@@ -73,7 +73,7 @@ export const pagesRouter = [
       {
         path: 'index4',
         name: 'home2-index4',
-        title: '多语言版',
+        title: '阿里图标库',
         component: resolve => require(['../pages/home2/index4'], resolve)
       },
     ]

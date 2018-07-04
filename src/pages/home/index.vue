@@ -1,7 +1,27 @@
 <template>
-  <div>
-    <h1>{{$t("home.title")}}</h1>
-    <h3>集成网络请求axios,模拟数据mock,websocket通讯mqtt,基础UI框架iview,报表图形统计vue-echarts,样式支持less,sass,scss,路由配置vue-router,状态管理树vuex等等技术,详细请看文档</h3>
+  <div class="page">
+    <h1>中英版:{{$t("home.title")}}</h1>
+    <Timeline>
+      <TimelineItem color="green">
+        <Icon type="trophy" slot="dot"></Icon>
+        <span>框架集成技术,绿色:已完成,蓝色:研发中,红色:未来规划</span>
+      </TimelineItem>
+      <TimelineItem color="green">网络请求axios</TimelineItem>
+      <TimelineItem color="green">模拟数据mock</TimelineItem>
+      <TimelineItem color="green">websocket通讯mqtt</TimelineItem>
+      <TimelineItem color="green">基础UI框架iview</TimelineItem>
+      <TimelineItem color="green">报表图形统计vue-echarts</TimelineItem>
+      <TimelineItem color="green">样式支持less,sass,scss</TimelineItem>
+      <TimelineItem color="green">路由配置vue-router</TimelineItem>
+      <TimelineItem color="green">状态管理树vuex</TimelineItem>
+      <TimelineItem color="green">阿里图标库iconfont</TimelineItem>
+      <TimelineItem color="green">加密和解密aes</TimelineItem>
+      <TimelineItem color="green">城市联级iview-area</TimelineItem>
+      <TimelineItem color="green">多语言vue-i18n</TimelineItem>
+      <TimelineItem color="green">发布1.0版本,自带登录页login和错误页errorPage</TimelineItem>
+      <TimelineItem color="blue">自定义组件,自定义网络请求,富文本编辑器</TimelineItem>
+      <TimelineItem color="red">目前暂无</TimelineItem>
+    </Timeline>
   </div>
 </template>
 <script>
@@ -11,6 +31,7 @@
       }
     },
     mounted () {
+      console.log(this)
     },
     methods: {
     },

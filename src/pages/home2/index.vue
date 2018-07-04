@@ -19,10 +19,29 @@
       </div>
       <div class="dt-search-operation">
         <Button type="error" @click="handleTableSelect">批量删除</Button>
-        <Button type="info" @click="handleSearch">新增</Button>
+        <Button type="info" @click="handleAdd">新增</Button>
       </div>
     </div>
     <dt-table ref="table" url="device/get_list" :params="params" :columns="columns"></dt-table>
+
+    <dt-slidePage v-model="modal1" title="新增">
+      <Form ref="form" :model="formData" :rules="rule" :label-width="100">
+        <FormItem label="条件1" prop="form1">
+          <Input v-model="formData.form1" placeholder="请输入条件1"></Input>
+        </FormItem>
+        <FormItem label="条件2" prop="form2">
+          <dt-select v-model="formData.form2" url="deviceType"/>
+        </FormItem>
+        <FormItem label="时间" prop="form3">
+          <DatePicker type="date" placeholder="请选择时间" style="width: 100%"></DatePicker>
+        </FormItem>
+        <FormItem>
+            <Button type="ghost" @click="handleSubmit()">保存</Button>
+            <Button type="text" @click="modal1 = false" style="margin-left: 8px">取消</Button>
+        </FormItem>
+      </Form>
+      <div slot="footer"></div>
+    </dt-slidePage>
   </div>
 </template>
 <script>
@@ -44,13 +63,7 @@
           { title: '标题6', key: 'key6' },
           { title: '过滤器', 
             render: (h, params) => {
-              // var a = params.row.key7|deviceTypeFilter;
-              // return h('span', {}, params.row.key7|deviceTypeFilter);
-              // return (
-              //   <div>
-              //     {params.row.key7|deviceTypeFilter}
-              //   </div>
-              // );
+              return h('span', {}, this.$filter.deviceTypeFilter(params.row.key7));
             }
           },
           { title: '操作', 
@@ -75,6 +88,17 @@
             }
           }
         ],
+        modal1: false,
+        formData: {
+          form1: '',
+          form2: '',
+          form3: '',
+        },
+        rule: {
+          form1: [],
+          form2: [],
+          form3: [],
+        }
       }
     },
     mounted () {
@@ -88,7 +112,13 @@
         }else {
           this.$Message.warning('请选择至少一项');
         }
-      }
+      },
+      handleAdd(){
+        this.modal1 = true;
+      },
+      handleSubmit(){
+        this.modal1 = false;
+      },
     },
   };
 </script>

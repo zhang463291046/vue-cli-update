@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="page">
+    <h1>加密和解密aes</h1>
     <Input v-model="value" placeholder="请输入需要加密的字符串" style="width: 300px"></Input>
     <Button type="info" @click="Encrypt">加密</Button>
     <Button type="success" @click="Decrypt">解密</Button>

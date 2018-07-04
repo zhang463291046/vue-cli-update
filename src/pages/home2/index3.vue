@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <Row :gutter="10">
         <Col span="17">
             <Card>
