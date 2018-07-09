@@ -1,7 +1,8 @@
-/* ====所有的验证方式==== */
-import {Notice, Message} from 'element-ui';
+/* ====自定义验证方式==== */
+import Vue from "vue"
+import {Message} from 'iview'
 
-/**
+/**验证规则:
  * empty 为空验证
  * phone 手机号验证
  * email 邮箱验证
@@ -18,75 +19,91 @@ const RegConfig = {
         return true;
       }
     },
-    con: '不能为空'
+    message: '不能为空'
   },
   phone: {
     validate: vData => {
       return /^1[0-9]{10}$/.test(vData);
     },
-    con: '格式不正确'
+    message: '格式不正确'
   },
   email: {
     validate: vData => {
       return /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/.test(vData);
     },
-    con: '格式不正确'
+    message: '格式不正确'
   },
   account: { // 账号
     validate: vData => {
       return /^\w{3,15}$/.test(vData);
     },
-    con: '为3到15位字母或数字'
+    message: '为3到15位字母或数字'
   },
   password: { // 密码
     validate: vData => {
       return /^\w{6,18}$/.test(vData);
     },
-    con: '必须为6-18位字母或数组'
+    message: '必须为6-18位字母或数组'
   },
   phoneDim: {
     validate: vData => {
       return /^\d{1,11}$/.test(vData);
     },
-    con: '必须为数字'
+    message: '必须为数字'
   },
   greaterZero: {
     validate: vData => {
       return /^[1-9]\d*$/.test(vData);
     },
-    con: '必须为正整数'
+    message: '必须为正整数'
   }
 };
 
-const Validate = (params) => {
+/**
+*自定义验证方法
+*params = [
+  ['张三', '用户名', 'empty'],
+  ['123456', '密码', 'empty|password'],
+]
+**/
+const RegFuntion = (params = []) => {
   for (let key1 = 0; key1 < params.length; key1++) {
-    let _item = params[key1]; // ['password', '126', '密码', 'trim|password']
-    let _vCon = _item[1]; // 需要验证的内容
-    let _vErrTip = _item[2]; // 错误提示的内容
-    let _vRegArr = _item[3].split('|'); // 需要验证的规则
+    let _item = params[key1]; // 单条数据
+    let _vCon = _item[0]; // 需要验证的内容
+    let _vErrTip = _item[1]; // 错误提示的内容
+    let _vRegArr = _item[2].split('|'); // 需要验证的规则
     for (let key2 = 0; key2 < _vRegArr.length; key2++) {
       let _vRegName = _vRegArr[key2]; // 验证规则名字
-      /**
-       * options 必须写在首位
-       * 首先判断是否包含options
-       * 如果是options就立刻判断空验证，如果为空跳出本次循环
-       */
-      if (_vRegName === 'options') { // 'options|empty|account'
-        let _vEmptyReturn = RegConfig['empty'].validate(_vCon);
-        if (!_vEmptyReturn) { // options选项时，如果为空就跳出判断
-          break;
-        }
-      } else {
-        let _vReturn = RegConfig[_vRegName].validate(_vCon);
-        if (!_vReturn) {
-          // Vue.prototype.$message.warning(_vErrTip + RegConfig[_vRegName].con);
-          Message.warning(_vErrTip + RegConfig[_vRegName].con);
-          return false;
-        }
+      console.log(_vRegName)
+      let _vReturn = RegConfig[_vRegName].validate(_vCon);
+      if (!_vReturn) {
+        Message.warning(_vErrTip + RegConfig[_vRegName].message);
+        return false;
       }
     }
   }
   return true;
 };
 
-export default Validate
+/**
+*挂载$validate
+**/
+Vue.prototype.$validate = (params = []) => {
+  var RegResult = RegFuntion(params);
+  console.log(RegResult)
+  return new Promise((resolve, reject) => {
+    if(RegResult){
+      resolve(true)
+    }else{
+      reject(false)
+    }
+  }).then( result =>{
+    console.log('result',result)
+    return result
+  })
+  // if(RegResult){
+  //   return Promise.resolve(true).then(result=>{console.log(result)})
+  // }else{
+  //   return Promise.reject(false).then(result=>{console.log(result)})
+  // }
+};

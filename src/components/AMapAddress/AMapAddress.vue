@@ -1,11 +1,11 @@
 <template>
-  <div class="pickerAddr">
+  <div class="pickerContent">
     <Row>
       <Col :span="24">
-        <input v-model="curValue" type="text" ref="search" id="search" class="ivu-input" placeholder="请输入详细地址"/>
+        <input v-model="value" type="text" ref="search" id="search" class="ivu-input" placeholder="请输入详细地址"/>
       </Col>
     </Row>
-    <div class="picker-map" ref="ref"></div>
+    <div class="pickerMap" ref="map"></div>
   </div>
 </template>
 
@@ -15,16 +15,14 @@
     name: 'AMapAddress',
 
     props: {
-      value: [String],
-      latitude: [String, Number],
-      longitude: [String, Number],
     },
 
     data() {
       return {
-        address: '',
-        curValue: this.value,
-        positionResult: {}
+        value: '', // 输入地址
+        longitude: '', // 经度
+        latitude: '', // 维度
+        address: '', // 详细地址
       }
     },
     watch: {
@@ -33,32 +31,30 @@
       this.loadMap();
     },
     methods: {
+      // 加载地图
       loadMap() {
-        const self = this;
-        const map = new AMap.Map(this.$refs.ref, {
+        const map = new AMap.Map(this.$refs.map, {
           zoom: 16,
           resizeEnable: true
         });
         this.map = map;
-        if (this.latitude && this.longitude) {
-          const center = [Number(this.longitude), Number(this.latitude)];
-          this.map.setZoomAndCenter(14, center);
-        }
-
+        const self = this;
         AMapUI.loadUI(['misc/PositionPicker'], function (PositionPicker) {
           // 拖拽选址
           var positionPicker = new PositionPicker({
             mode: 'dragMap',
-            map: self.map
+            map: map
           });
           // 拖拽地图成功回调
           positionPicker.on('success', function (positionResult) {
-            console.log(positionResult)
+            self.longitude = positionResult.position.lng;
+            self.latitude = positionResult.position.lat;
             self.address = positionResult.address;
-            self.positionResult = positionResult;
           });
           // 拖拽地图失败回调
           positionPicker.on('fail', function (positionResult) {
+            self.longitude = 0;
+            self.latitude = 0;
             self.address = '定位解析失败，请稍后重试！';
           });
           // 开启拖拽选址
@@ -77,22 +73,35 @@
           }
         });
       },
-      getPositionResult() {
-        return this.positionResult;
+      // 获取点信息
+      getPosition() {
+        return {
+          value: this.value,
+          longitude: this.longitude,
+          latitude: this.latitude,
+          address: this.address,
+        }
       },
-
+      // 设置点信息
+      setPosition(params={}) {
+        this.value = params.value;
+        this.longitude = params.longitude;
+        this.latitude = params.latitude;
+        this.address = params.address;
+        var center = [Number(params.longitude), Number(params.latitude)];
+        this.map.setZoomAndCenter(14, center);
+      },
     },
-    
   }
 </script>
 
 <style lang="less" scoped>
-  .pickerAddr{
+  .pickerContent{
+    width: 100%;
+  }
+  .pickerMap{
     width: 100%;
     height: 200px;
-  }
-  .picker-map{
-    width: 100%;
-    height: 100%;
+    margin-top: 10px;
   }
 </style>

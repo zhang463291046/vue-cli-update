@@ -90,25 +90,25 @@ export const pagesRouter = [
       {
         path: 'index',
         name: 'home3-index',
-        title: 'mockjs模拟数据',
+        title: '组件1',
         component: resolve => require(['../pages/home3/index'], resolve)
       },
       {
         path: 'index3',
         name: 'home3-index3',
-        title: 'aes加密和解密',
+        title: '组件2',
         component: resolve => require(['../pages/home3/index2'], resolve)
       },
       {
         path: 'index3',
         name: 'home3-index3',
-        title: '城市联级',
+        title: '组件3',
         component: resolve => require(['../pages/home3/index3'], resolve)
       },
       {
         path: 'index4',
         name: 'home3-index4',
-        title: '多语言版',
+        title: '组件4',
         component: resolve => require(['../pages/home3/index4'], resolve)
       },
     ]

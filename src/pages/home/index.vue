@@ -17,6 +17,7 @@
       <TimelineItem color="green">阿里图标库iconfont</TimelineItem>
       <TimelineItem color="green">加密和解密aes</TimelineItem>
       <TimelineItem color="green">城市联级iview-area</TimelineItem>
+      <TimelineItem color="green">高德地图AMap</TimelineItem>
       <TimelineItem color="green">多语言vue-i18n</TimelineItem>
       <TimelineItem color="green">发布1.0版本,自带登录页login和错误页errorPage</TimelineItem>
       <TimelineItem color="blue">自定义组件,自定义网络请求,富文本编辑器</TimelineItem>

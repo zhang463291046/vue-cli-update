@@ -35,6 +35,12 @@
         <FormItem label="时间" prop="form3">
           <DatePicker type="date" placeholder="请选择时间" style="width: 100%"></DatePicker>
         </FormItem>
+        <FormItem label="区域" prop="form4">
+          <Row><al-selector v-model="formData.form4" level="2" auto gutter='0'/></Row>
+        </FormItem>
+        <FormItem label="详细地址" prop="form5">
+          <dt-AMapAddress ref="AMapAddress"/>
+        </FormItem>
         <FormItem>
             <Button type="ghost" @click="handleSubmit()">保存</Button>
             <Button type="text" @click="modal1 = false" style="margin-left: 8px">取消</Button>
@@ -72,16 +78,31 @@
               return h('div', [
                   h('Button', {
                       props: {
-                          type: 'error',
-                          size: 'small',
-                          shape: 'circle',
-                          icon: 'trash-a'
+                        type: 'primary',
+                        size: 'small',
+                        icon: 'edit'
+                      },
+                      style: {
+                        marginRight: '10px'
                       },
                       on: {
-                          click: () => {
-                            console.log('点击事件',params.row.key1)
-                            this.handleRemove('device/get_list',{id:params.row.key1})
-                          }
+                        click: () => {
+                          console.log('点击事件',params.row.key1)
+                          this.handleEdit(params.row);
+                        }
+                      }
+                  }, '编辑'),
+                  h('Button', {
+                      props: {
+                        type: 'error',
+                        size: 'small',
+                        icon: 'trash-a'
+                      },
+                      on: {
+                        click: () => {
+                          console.log('点击事件',params.row.key1)
+                          this.handleRemove('device/get_list',{id:params.row.key1})
+                        }
                       }
                   }, '删除')
               ]);
@@ -116,7 +137,25 @@
       handleAdd(){
         this.modal1 = true;
       },
+      handleEdit(item){
+        this.modal1 = true;
+        // 设置地图点数据
+        this.$refs.AMapAddress.setPosition({
+          value: '腾讯大厦',
+          longitude: '113.934457',
+          latitude: '22.540822',
+        });
+      },
       handleSubmit(){
+        // 获取地图点数据
+        var position = this.$refs.AMapAddress.getPosition();
+        console.log('地图点位置',position);
+        let vArr = [
+          [this.formData.form1, '姓名', 'empty|password'],
+        ];
+        this.$validate(vArr).then(valid => {
+          console.log('11111',valid)
+        });
         this.modal1 = false;
       },
     },

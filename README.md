@@ -79,6 +79,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 | 状态管理树                 | vuex                     |暂无                       |
 | 国际化语言库               | vue-i18n                 |暂无                       |
 | 城市联级                   | iview-area               |暂无                       |
+| 高德地图                   | AMap                     |暂无                       |
 
 
 ## 开发常用包推荐
