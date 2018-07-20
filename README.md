@@ -39,6 +39,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 │   ├── ajaxAPI              // 自定义API请求
 │   ├── api                  // 第三方API请求
 │   ├── assets               // 图片资源
+│   ├── browser              // 处理浏览器兼容性问题
 │   ├── components           // 自定义组件
 │   ├── directive            // 自定义指令
 │   ├── extend               // 扩展函数

@@ -1,5 +1,8 @@
 <template>
   <div class="slide">
+    <div>
+      <img width="100%" height="60px" src="@/assets/bg.png">
+    </div>
     <Menu accordion :active-name="activeName" width="auto" @on-select="changeMenu">
       <div v-for="(item,index) in menuList" :key="index">
         <MenuItem v-if="!item.hasChildren" :name="item.toName">
@@ -50,7 +53,7 @@
   .slide{
     position: fixed;
     width: 200px;
-    top: 60px;
+    top: 0px;
     left:0px;
     bottom: 0px;
     overflow: auto;

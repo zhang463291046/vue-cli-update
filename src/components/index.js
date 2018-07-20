@@ -1,7 +1,16 @@
 /* 
-*注册全局自定义组件
+*注册全局组件
 */
 import Vue from 'vue'
+/* 
+*第三方组件
+*/
+import iviewArea from 'iview-area'
+Vue.use(iviewArea)
+
+/* 
+*自定义组件
+*/
 
 /* 
 *手动加载定义组件

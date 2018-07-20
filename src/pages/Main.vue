@@ -1,7 +1,7 @@
 <template>
   <div class="main">
+    <dt-slideMenu/>
     <div class="main-header">
-      <div class="main-title">vue-cli管理系统</div>
       <div class="main-left">
         <Poptip trigger="hover" placement="bottom" width="100px">
           <span class="user">{{lang}}</span>
@@ -11,6 +11,7 @@
           </div>
         </Poptip>
       </div>
+      <div class="main-title">vue-cli管理系统</div>
       <div class="main-right">
         <Poptip trigger="hover" placement="bottom-end" width="100px">
           <span class="user">{{userInfo.name}}</span>
@@ -22,7 +23,6 @@
       </div>
     </div>
     <div class="main-body">
-      <dt-slideMenu/>
       <div class="panel">
         <transition name="singlePage">
           <router-view></router-view>
@@ -70,29 +70,6 @@
     height: 100%;
     min-width: 1200px;
   }
-  .main-logo{
-    padding: 8px;
-    text-align: center;
-    display: inline-block;
-    vertical-align: middle;
-
-    img{
-      height: 44px;
-      width: auto;
-    }
-  }
-
-  .panel{
-    position: absolute;
-    left: 200px;
-    top: 60px;
-    right: 0px;
-    bottom: 0px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    transition: left .3s;
-  }
-
   .main-header{
     box-sizing: border-box;
     position: fixed;
@@ -137,37 +114,30 @@
       color: #FFF;
       font-size: 14px;
     }
-  }
-  .main-page{
-    position: absolute;
-    top: 60px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    overflow: auto;
-    z-index: 1;
-    transition: left .3s;
-    background: #f0f0f0;
-  }
-  .main-switch{
-    margin: 6px;
-    transition: all .3s;
-  }
-
-  .user{
-    cursor: pointer;
-  }
-  .tips{
-    color: #333;
-    text-align: center;
-
-    .tip-item{
-      padding: 5px 0px;
+    .user{
       cursor: pointer;
+    }
+    .tips{
+      color: #333;
+      text-align: center;
+      .tip-item{
+        padding: 5px 0px;
+        cursor: pointer;
 
-      &:hover{
-        color: #f29100;
+        &:hover{
+          color: #f29100;
+        }
       }
     }
+  }
+  .panel{
+    position: absolute;
+    left: 200px;
+    top: 60px;
+    right: 0px;
+    bottom: 0px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    transition: left .3s;
   }
 </style>
