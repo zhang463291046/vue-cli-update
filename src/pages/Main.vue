@@ -23,11 +23,9 @@
       </div>
     </div>
     <div class="main-body">
-      <div class="panel">
-        <transition name="singlePage">
-          <router-view></router-view>
-        </transition>
-      </div>
+      <transition name="singlePage">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -75,9 +73,8 @@
     position: fixed;
     width: 100%;
     height: 60px;
-    transition: padding .3s;
-    box-shadow: 0 2px 1px 1px hsla(0,0%,39%,.1);
-    z-index: 20;
+    padding-left: 200px;
+    box-shadow: 0 2px 1px 1px hsla(0,0%,39%,0.1);
     background: #2d8cf0;
     .main-icon{
       display: inline-block;
@@ -99,7 +96,7 @@
     .main-left {
       position: absolute;
       top: 20px;
-      right: 150px;
+      left: 220px;
       height: 20px;
       line-height: 20px;
       color: #FFF;
@@ -130,7 +127,7 @@
       }
     }
   }
-  .panel{
+  .main-body{
     position: absolute;
     left: 200px;
     top: 60px;

@@ -22,6 +22,11 @@
         <Button type="info" @click="handleAdd">新增</Button>
       </div>
     </div>
+    <div class="dt-search-top">
+      <div class="dt-search-cell">
+        条件5：<dt-selectDate  class="dt-search-date"/>
+      </div>
+    </div>
     <dt-table ref="table" url="device/get_list" :params="params" :columns="columns"></dt-table>
 
     <dt-slidePage v-model="modal1" title="新增">

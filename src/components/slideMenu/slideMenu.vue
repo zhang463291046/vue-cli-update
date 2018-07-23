@@ -1,7 +1,7 @@
 <template>
   <div class="slide">
     <div>
-      <img width="100%" height="60px" src="@/assets/bg.png">
+      <img width="100%" height="60px" src="@/assets/logo.png" style="background: #2d8cf0;">
     </div>
     <Menu accordion :active-name="activeName" width="auto" @on-select="changeMenu">
       <div v-for="(item,index) in menuList" :key="index">
@@ -56,8 +56,8 @@
     top: 0px;
     left:0px;
     bottom: 0px;
+    z-index: 1;
     overflow: auto;
     background: #ffffff;
-    transition: width .3s;
   }
 </style>
