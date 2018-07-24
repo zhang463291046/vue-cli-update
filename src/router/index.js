@@ -12,11 +12,17 @@ export const baseRouter = [
     name: 'login',
     title: '登录',
     component: resolve => require(['../pages/login/login.vue'], resolve)
+  },
+  {
+    path: '/forget',
+    name: 'forget',
+    title: '忘记密码',
+    component: (resolve) => require(['../pages/login/forget.vue'], resolve)
   }
 ];
 
 /*
-*页面路由,参数说明
+*作为Main组件的子页面展示并且在左侧菜单显示的路由,参数说明
 *@path 路径
 *@name 路由别名
 *@icon 一级菜单图标
@@ -39,6 +45,7 @@ export const pagesRouter = [
       {
         path: 'index',
         name: 'home-index',
+        title: '首页',
         component: resolve => require(['../pages/home/index'], resolve)
       }
     ]
@@ -94,8 +101,8 @@ export const pagesRouter = [
         component: resolve => require(['../pages/home3/index'], resolve)
       },
       {
-        path: 'index3',
-        name: 'home3-index3',
+        path: 'index2',
+        name: 'home3-index2',
         title: '组件2',
         component: resolve => require(['../pages/home3/index2'], resolve)
       },
@@ -111,6 +118,51 @@ export const pagesRouter = [
         title: '组件4',
         component: resolve => require(['../pages/home3/index4'], resolve)
       },
+    ]
+  },
+];
+
+/*
+*作为Main组件的子页面展示但是不在左侧菜单显示的路由,参数说明
+*@path 路径
+*@name 路由别名
+*@title 名字
+*@component 对应组件加载
+*/
+export const othersRouter = [
+  {
+    path: '/user',
+    name: 'user',
+    title: '用户板块',
+    component: Main,
+    children: [
+      {
+        path: 'index',
+        name: 'user-index',
+        title: '用户信息',
+        component: resolve => require(['../pages/user/index'], resolve)
+      },
+      {
+        path: 'index2',
+        name: 'user-index2',
+        title: '修改密码',
+        component: resolve => require(['../pages/user/index2'], resolve)
+      },
+    ]
+  },
+  {
+    path: '/others',
+    name: 'othersRouter',
+    redirect: '/home',
+    title: '单菜单',
+    component: Main,
+    children: [
+      {
+        path: 'edit',
+        name: 'home-edit',
+        title: '编辑',
+        component: resolve => require(['../pages/home/index'], resolve)
+      }
     ]
   },
 ];
@@ -142,6 +194,7 @@ export default new Router({
   routes: [
     ...baseRouter,
     ...pagesRouter,
+    ...othersRouter,
     ...errRouter,
   ]
 })

@@ -8,19 +8,24 @@
             <span slot="prepend"><Icon type="person"></Icon></span>
           </Input>
         </FormItem>
+        <FormItem label="" prop="code">
+          <div class="code">
+            <Input v-model.trim="form.code" placeholder="请输入验证码" :maxlength="6" style="width:220px;">
+              <span slot="prepend"><Icon type="locked"></Icon></span>
+            </Input>
+            <Button type="primary" :disabled="isSend" @click="handleSendCode">{{BtnText}}</Button>
+          </div>
+        </FormItem>
         <FormItem label="" prop="password">
           <Input v-model.trim="form.password" placeholder="请输入密码" :maxlength="12" type="password">
             <span slot="prepend"><Icon type="locked"></Icon></span>
           </Input>
         </FormItem>
-        <FormItem label="" prop="remember">
-          <div class="remember">
-            <Checkbox v-model="form.remember">记住密码</Checkbox>
-            <div style="cursor: pointer" @click="handleRouter('forget')">忘记密码</div>
-          </div>
+        <FormItem label="">
+          <Button type="primary" long @click="handleSubmit">保存</Button>
         </FormItem>
         <FormItem label="">
-          <Button type="primary" long @click="handleLogin">登录</Button>
+          <Button type="text" long @click="handleRouter('login')">返回</Button>
         </FormItem>
       </Form>
     </div>
@@ -31,10 +36,12 @@
   export default {
     data () {
       return {
+        isSend: false,
+        BtnText: '获取验证码',
         form: {
           username: '',
           password: '',
-          remember: true
+          code: ''
         },
         rules: {
 
@@ -45,11 +52,28 @@
       
     },
     methods: {
-      handleLogin () {
-        // this.$http.post('/login/do_login',{}).then( res => {
-
-        // })
-        this.$router.push({'name':'home-index'});
+      handleSendCode(){
+        var re = /^1[0-9]{10}$/;
+        if(!re.test(this.form.username)){
+          this.$Message.warning('请输入正确格式的手机号');
+          return
+        }
+        let timeLast = 60;
+        let timer = setInterval(() => {
+            if (timeLast >= 0) {
+                this.isSend = true;
+                this.BtnText = timeLast + '秒后重试';
+                timeLast -= 1;
+            } else {
+                clearInterval(timer);
+                this.isSend = false;
+                this.BtnText = '获取验证码';
+            }
+        }, 1000);
+        // you can write ajax request here
+      },
+      handleSubmit () {
+        this.handleRouter('login');
       }
     },
   };
@@ -83,7 +107,7 @@
       .loginForm{
         margin: 20px 30px;
       }
-      .remember{
+      .code{
         display: flex;
         flex-direction: row;
         align-items: center;

@@ -12,7 +12,7 @@
         条件3：<dt-selectUrl v-model="params.key3" class="dt-search-select" url="device/get_select"/>
       </div>
       <div class="dt-search-cell">
-        条件4：<DatePicker type="date" placeholder="请选择时间" class="dt-search-date"></DatePicker>
+        条件4：<DatePicker type="date" placeholder="请选择时间" class="dt-search-date" @on-change="dateChange"></DatePicker>
       </div>
       <div class="dt-search-cell">
         <Button type="ghost" @click="handleSearch">查询</Button>
@@ -24,17 +24,17 @@
     </div>
     <div class="dt-search-top">
       <div class="dt-search-cell">
-        条件5：<dt-selectDate  class="dt-search-date"/>
+        条件5：<dt-selectDate class="dt-search-date" @on-select="handleDateSelect"/>
       </div>
     </div>
     <dt-table ref="table" url="device/get_list" :params="params" :columns="columns"></dt-table>
 
     <dt-slidePage v-model="modal1" title="新增">
       <Form ref="form" :model="formData" :rules="rule" :label-width="100">
-        <FormItem label="条件1" prop="form1">
+        <FormItem label="输入框" prop="form1">
           <Input v-model="formData.form1" placeholder="请输入条件1"></Input>
         </FormItem>
-        <FormItem label="条件2" prop="form2">
+        <FormItem label="选择" prop="form2">
           <dt-select v-model="formData.form2" url="deviceType"/>
         </FormItem>
         <FormItem label="时间" prop="form3">
@@ -62,7 +62,10 @@
         params: {
           key1: '',
           key2: '',
-          key3: ''
+          key3: '',
+          key4: '',
+          key5: '',
+          key6: '',
         },
         columns: [
           { type: 'selection',width: 60},
@@ -130,6 +133,14 @@
     mounted () {
     },
     methods: {
+      dateChange(val) {
+        this.params.key4 = val;
+      },
+      handleDateSelect(val){
+        console.log(val)
+        this.params.key5 = val[0];
+        this.params.key6 = val[1];
+      },
       handleTableSelect(){
         //获取选中的列表项,默认返回id数组,支持传参getSelect('key1');
         var arr = this.$refs.table.getSelect();

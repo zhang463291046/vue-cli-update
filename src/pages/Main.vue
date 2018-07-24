@@ -16,7 +16,8 @@
         <Poptip trigger="hover" placement="bottom-end" width="100px">
           <span class="user">{{userInfo.name}}</span>
           <div class="tips" slot="content">
-            <div class="tip-item">修改密码</div>
+            <div class="tip-item" @click="handleRouter('user-index')">用户信息</div>
+            <div class="tip-item" @click="handleRouter('user-index2')">修改密码</div>
             <div class="tip-item" @click="handleLogout">退出登录</div>
           </div>
         </Poptip>
@@ -69,6 +70,7 @@
     min-width: 1200px;
   }
   .main-header{
+    z-index: 1;
     box-sizing: border-box;
     position: fixed;
     width: 100%;
