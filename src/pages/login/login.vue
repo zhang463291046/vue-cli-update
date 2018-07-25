@@ -2,20 +2,20 @@
   <div class="login">
     <div class="login-main" @keyup.enter="handleLogin">
       <div class="logo">vue-cli管理系统</div>
-      <Form class="loginForm" ref="form" :model="form" :rules="rules" :label-width="0">
+      <Form class="loginForm" ref="form" :model="formData" :rules="rules" :label-width="0">
         <FormItem label="" prop="username">
-          <Input v-model.trim="form.username" placeholder="请输入手机号码/邮箱" :maxlength="20">
+          <Input v-model.trim="formData.username" placeholder="请输入手机号码" :maxlength="20">
             <span slot="prepend"><Icon type="person"></Icon></span>
           </Input>
         </FormItem>
         <FormItem label="" prop="password">
-          <Input v-model.trim="form.password" placeholder="请输入密码" :maxlength="12" type="password">
+          <Input v-model.trim="formData.password" placeholder="请输入密码" :maxlength="12" type="password">
             <span slot="prepend"><Icon type="locked"></Icon></span>
           </Input>
         </FormItem>
         <FormItem label="" prop="remember">
           <div class="remember">
-            <Checkbox v-model="form.remember">记住密码</Checkbox>
+            <Checkbox v-model="formData.remember">记住密码</Checkbox>
             <div style="cursor: pointer" @click="handleRouter('forget')">忘记密码</div>
           </div>
         </FormItem>
@@ -31,7 +31,7 @@
   export default {
     data () {
       return {
-        form: {
+        formData: {
           username: '',
           password: '',
           remember: true

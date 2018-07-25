@@ -2,22 +2,22 @@
   <div class="login">
     <div class="login-main" @keyup.enter="handleLogin">
       <div class="logo">vue-cli管理系统</div>
-      <Form class="loginForm" ref="form" :model="form" :rules="rules" :label-width="0">
+      <Form class="loginForm" ref="form" :model="formData" :rules="rules" :label-width="0">
         <FormItem label="" prop="username">
-          <Input v-model.trim="form.username" placeholder="请输入手机号码/邮箱" :maxlength="20">
+          <Input v-model.trim="formData.username" placeholder="请输入手机号码" :maxlength="20">
             <span slot="prepend"><Icon type="person"></Icon></span>
           </Input>
         </FormItem>
         <FormItem label="" prop="code">
           <div class="code">
-            <Input v-model.trim="form.code" placeholder="请输入验证码" :maxlength="6" style="width:220px;">
+            <Input v-model.trim="formData.code" placeholder="请输入验证码" :maxlength="6" style="width:220px;">
               <span slot="prepend"><Icon type="locked"></Icon></span>
             </Input>
             <Button type="primary" :disabled="isSend" @click="handleSendCode">{{BtnText}}</Button>
           </div>
         </FormItem>
         <FormItem label="" prop="password">
-          <Input v-model.trim="form.password" placeholder="请输入密码" :maxlength="12" type="password">
+          <Input v-model.trim="formData.password" placeholder="请输入密码" :maxlength="12" type="password">
             <span slot="prepend"><Icon type="locked"></Icon></span>
           </Input>
         </FormItem>
@@ -38,7 +38,7 @@
       return {
         isSend: false,
         BtnText: '获取验证码',
-        form: {
+        formData: {
           username: '',
           password: '',
           code: ''
