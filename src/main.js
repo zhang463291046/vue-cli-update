@@ -7,7 +7,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './api'								//第三方网络请求
-import './ajaxAPI/Validate.js'				//自定义网络请求
+import './ajaxAPI'							//自定义网络请求
 import './components'						//自定义组件
 import './directive'						//自定义指令
 import './extend'							//扩展方法

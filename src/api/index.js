@@ -77,8 +77,7 @@ var http = axios.create({
         if (response.code == '0') { 
           resolve(response) 
         }
-      })
-      .catch((error) => {
+      }).catch((error) => {
         reject(error)
       })
     })

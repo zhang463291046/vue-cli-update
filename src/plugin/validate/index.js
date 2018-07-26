@@ -1,5 +1,4 @@
 /* ====自定义验证方式==== */
-import Vue from "vue"
 import {Message} from 'iview'
 
 /**验证规则:
@@ -43,13 +42,7 @@ const RegConfig = {
     validate: vData => {
       return /^\w{6,18}$/.test(vData);
     },
-    message: '必须为6-18位字母或数组'
-  },
-  phoneDim: {
-    validate: vData => {
-      return /^\d{1,11}$/.test(vData);
-    },
-    message: '必须为数字'
+    message: '必须为6-18位字母或数字'
   },
   greaterZero: {
     validate: vData => {
@@ -71,10 +64,9 @@ const RegFuntion = (params = []) => {
     let _item = params[key1]; // 单条数据
     let _vCon = _item[0]; // 需要验证的内容
     let _vErrTip = _item[1]; // 错误提示的内容
-    let _vRegArr = _item[2].split('|'); // 需要验证的规则
+    let _vRegArr = _item[2].split('|'); // 需要验证的规则,多个可以用管道
     for (let key2 = 0; key2 < _vRegArr.length; key2++) {
       let _vRegName = _vRegArr[key2]; // 验证规则名字
-      console.log(_vRegName)
       let _vReturn = RegConfig[_vRegName].validate(_vCon);
       if (!_vReturn) {
         Message.warning(_vErrTip + RegConfig[_vRegName].message);
@@ -86,24 +78,19 @@ const RegFuntion = (params = []) => {
 };
 
 /**
-*挂载$validate
+*拦截验证,只有表单验证通过才继续then
 **/
-Vue.prototype.$validate = (params = []) => {
+const validate = (params = []) => {
   var RegResult = RegFuntion(params);
-  console.log(RegResult)
   return new Promise((resolve, reject) => {
     if(RegResult){
       resolve(true)
-    }else{
-      reject(false)
     }
-  }).then( result =>{
-    console.log('result',result)
+  }).then(result =>{
     return result
   })
-  // if(RegResult){
-  //   return Promise.resolve(true).then(result=>{console.log(result)})
-  // }else{
-  //   return Promise.reject(false).then(result=>{console.log(result)})
-  // }
 };
+
+export {
+  validate
+}

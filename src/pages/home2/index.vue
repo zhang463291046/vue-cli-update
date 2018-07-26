@@ -31,7 +31,7 @@
 
     <dt-slidePage v-model="modal1" title="新增">
       <Form ref="form" :model="formData" :rules="rule" :label-width="100">
-        <FormItem label="输入框" prop="form1">
+        <FormItem label="输入框" prop="form1" required>
           <Input v-model="formData.form1" placeholder="请输入条件1"></Input>
         </FormItem>
         <FormItem label="选择" prop="form2">
@@ -122,11 +122,11 @@
           form1: '',
           form2: '',
           form3: '',
+          form4: [],
+          form5: '',
         },
         rule: {
-          form1: [],
-          form2: [],
-          form3: [],
+          
         }
       }
     },
@@ -166,13 +166,14 @@
         // 获取地图点数据
         var position = this.$refs.AMapAddress.getPosition();
         console.log('地图点位置',position);
+        // 自定义验证规则
         let vArr = [
-          [this.formData.form1, '姓名', 'empty|password'],
+          [this.formData.form1, '输入框', 'empty|password'],
         ];
         this.$validate(vArr).then(valid => {
-          console.log('11111',valid)
+          console.log('自定义表单验证valid',valid);
+          this.modal1 = false;
         });
-        this.modal1 = false;
       },
     },
   };

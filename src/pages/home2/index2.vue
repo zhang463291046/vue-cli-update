@@ -23,11 +23,11 @@
     methods: {
       // 加密
       Encrypt(){
-        this.aesValue = this.aesEncrypt(this.value);
+        this.aesValue = this.$aesEncrypt(this.value);
       },
       // 解密
       Decrypt(){
-        this.aesValue = this.aesDecrypt(this.aesValue);
+        this.aesValue = this.$aesDecrypt(this.aesValue);
       },
     },
   };
