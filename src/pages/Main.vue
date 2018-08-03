@@ -3,6 +3,7 @@
     <dt-slideMenu/>
     <div class="main-header">
       <div class="main-left">
+        <ColorPicker v-model="color" @on-change="colorChange"/>
         <Poptip trigger="hover" placement="bottom" width="100px">
           <span class="user">{{lang}}</span>
           <div class="tips" slot="content">
@@ -39,16 +40,72 @@
     },
     data() {
       return {
-        lang:'中文'
+        color: '#2d8cf0',
+        originalStyle: '',
+        lang: '中文',
       }
     },
     computed: {
       ...mapGetters(['userInfo'])
     },
     mounted() {
-      
+      this.getIndexStyle();
+      this.$nextTick(() => {
+        this.originalStylesheetCount = document.styleSheets.length
+      })
     },
     methods: {
+      getIndexStyle () {
+        // 此处请求地址需要特别注意
+        this.getFile('https://unpkg.com/iview/dist/styles/iview.css').then(({ data, url }) => {
+          this.originalStyle = data;
+        })
+      },
+      getFile (url) {
+        return new Promise((resolve, reject) => {
+          const client = new XMLHttpRequest()
+          client.onreadystatechange = () => {
+            if (client.readyState !== 4) {
+              return
+            }
+            if (client.status === 200) {
+              resolve({
+                data: client.response,
+                url: client.responseURL
+              })
+            } else {
+              reject(new Error(client.statusText))
+            }
+          }
+          client.open('GET', url)
+          client.send()
+        })
+      },
+      colorChange(value){
+        this.writeNewStyle();
+      },
+      writeNewStyle () {
+        // 换肤色大概思路:
+        // 第一种方式,引进全部样式,正则匹配修改对应的样式值
+        // 第二种方式,通过判断,加载预先配置好的不同的样式文件
+        // 第三种方式,通过修改配置文件less的变量值,待研究中
+        let cssText = JSON.parse(JSON.stringify(this.originalStyle));
+        let colors = {
+          '#2d8cf0':this.color,
+          '#2db7f5':this.color,
+          '#17233d':this.color,
+        }
+        Object.keys(colors).forEach(key => {
+          cssText = cssText.replace(new RegExp(key, 'g'), colors[key])
+        })
+        if (this.originalStylesheetCount === document.styleSheets.length) {
+          const style = document.createElement('style')
+          style.innerText = cssText
+          document.head.appendChild(style)
+        } else {
+          document.head.lastChild.innerText = cssText
+        }
+      },
       changeLocale(locale,lang){
         this.$i18n.locale = locale;
         this.lang = lang;
