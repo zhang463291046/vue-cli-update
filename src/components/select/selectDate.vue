@@ -60,6 +60,10 @@ export default {
     },
     select () {
       this.$emit('on-select',[this.start_time,this.end_time]);
+    },
+    setDate(start_time,end_time) {
+      this.start_time = start_time;
+      this.end_time = end_time;
     }
   }
 }
