@@ -97,25 +97,25 @@ export const pagesRouter = [
       {
         path: 'index',
         name: 'home3-index',
-        title: '组件1',
+        title: '自定义树',
         component: resolve => require(['../pages/home3/index'], resolve)
       },
       {
         path: 'index2',
         name: 'home3-index2',
-        title: '组件2',
+        title: '树型结构扩展',
         component: resolve => require(['../pages/home3/index2'], resolve)
       },
       {
         path: 'index3',
         name: 'home3-index3',
-        title: '组件3',
+        title: '省市区地址',
         component: resolve => require(['../pages/home3/index3'], resolve)
       },
       {
         path: 'index4',
         name: 'home3-index4',
-        title: '组件4',
+        title: '富文本编辑器',
         component: resolve => require(['../pages/home3/index4'], resolve)
       },
     ]

@@ -15,7 +15,7 @@
       <div class="main-title">vue-cli管理系统</div>
       <div class="main-right">
         <Poptip trigger="hover" placement="bottom-end" width="100px">
-          <span class="user">{{userInfo.name}}</span>
+          <span class="user">{{userInfo.name||'VUEX管理员'}}</span>
           <div class="tips" slot="content">
             <div class="tip-item" @click="handleRouter('user-index')">用户信息</div>
             <div class="tip-item" @click="handleRouter('user-index2')">修改密码</div>

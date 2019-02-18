@@ -66,7 +66,7 @@ export default {
   },
   data() {
     return {
-      currProvince: '',
+      currProvince: '天津市',
       currCity: '',
       currCountry: '',
       provinceList: [],
@@ -83,9 +83,9 @@ export default {
   watch: {
     defaultValue (val) {
       console.log('val',val)
-      // this.currProvince = val[0];
-      // this.currCity = val[1];
-      // this.currCountry = val[2];
+      this.currProvince = val[0];
+      this.currCity = val[1];
+      this.currCountry = val[2];
     },
     currProvince (val,oldVal) {
       console.log('province',val,oldVal);
@@ -125,10 +125,12 @@ export default {
     },
   },
   mounted () {
+    console.log(this.value)
     this.provinceListOjb = areaData[86];
     this.provinceList = Object.values(areaData[86]);
   },
   methods: {
+    // 返回键
     getIndex(list,name){
       for (const i in list) {
         if (list[i] === name) {
@@ -138,12 +140,18 @@ export default {
     }, 
     provinceChange(val){
       console.log('provinceChange',val)
+      this.select();
     },
     cityChange(val){
       console.log('cityChange',val)
+      this.select();
     },
     countryChange(val){
       console.log('countryChange',val)
+      this.select();
+    },
+    select() {
+      this.$emit('on-select',[this.currProvince,this.currCity,this.currCountry]);
     },
   }
 }

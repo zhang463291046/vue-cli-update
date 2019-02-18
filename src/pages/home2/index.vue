@@ -2,48 +2,58 @@
   <div class="page">
     <h1>mockjs模拟数据</h1>
     <div class="dt-search-top">
-      <div class="dt-search-cell">
-        条件1：<Input v-model="params.key1" class="dt-search-input" placeholder="请输入条件1" />
-      </div>
-      <div class="dt-search-cell">
-        条件2：<dt-select v-model="params.key2" class="dt-search-select" url="deviceType"/>
-      </div>
-      <div class="dt-search-cell">
-        条件3：<dt-selectUrl v-model="params.key3" class="dt-search-select" url="device/get_select"/>
-      </div>
-      <div class="dt-search-cell">
-        条件4：<DatePicker type="date" placeholder="请选择时间" class="dt-search-date" @on-change="dateChange"></DatePicker>
-      </div>
-      <div class="dt-search-cell">
-        <Button type="ghost" @click="handleSearch">查询</Button>
+      <div class="dt-search-cells">
+        <div class="dt-search-cell">
+          输入框：<Input v-model="params.key1" class="dt-search-input" placeholder="请输入输入框" />
+        </div>
+        <div class="dt-search-cell">
+          选择：<dt-select v-model="params.key2" class="dt-search-select" url="deviceType"/>
+        </div>
+        <div class="dt-search-cell">
+          选择2：<dt-selectUrl v-model="params.key3" class="dt-search-select" url="device/get_select"/>
+        </div>
+        <div class="dt-search-cell">
+          时间：<DatePicker type="date" placeholder="请选择时间" class="dt-search-date" @on-change="dateChange"></DatePicker>
+        </div>
+        <div class="dt-search-cell">
+          时间段：<dt-selectDate class="dt-search-date" @on-select="handleDateSelect"/>
+        </div>
+        <div class="dt-search-cell">
+          区域：<al-selector data-type="name" level="2" v-model="params.key7" class="dt-search-area"/>
+        </div>
+        <div class="dt-search-cell">
+          <Button type="ghost" @click="handleSearch">查询</Button>
+        </div>
       </div>
       <div class="dt-search-operation">
         <Button type="error" @click="handleTableSelect">批量删除</Button>
         <Button type="info" @click="handleAdd">新增</Button>
       </div>
     </div>
-    <div class="dt-search-top">
-      <div class="dt-search-cell">
-        条件5：<dt-selectDate class="dt-search-date" @on-select="handleDateSelect"/>
-      </div>
-    </div>
+
     <dt-table ref="table" url="device/get_list" :params="params" :columns="columns"></dt-table>
 
-    <dt-slidePage v-model="modal1" title="新增">
+    <dt-slidePage v-model="modal1" :title="modelTitle">
       <Form ref="form" :model="formData" :rules="rule" :label-width="100">
         <FormItem label="输入框" prop="form1" required>
-          <Input v-model="formData.form1" placeholder="请输入条件1"></Input>
+          <Input v-model="formData.form1" placeholder="请输入输入框"></Input>
         </FormItem>
         <FormItem label="选择" prop="form2">
-          <dt-select v-model="formData.form2" url="deviceType"/>
+          <dt-select v-model="formData.form2" url="deviceTypeModal"/>
         </FormItem>
-        <FormItem label="时间" prop="form3">
-          <DatePicker type="date" placeholder="请选择时间" style="width: 100%"></DatePicker>
+        <FormItem label="选择2" prop="form3">
+          <dt-selectUrl v-model="formData.form3" url="device/get_select"/>
         </FormItem>
-        <FormItem label="区域" prop="form4">
-          <Row><al-selector v-model="formData.form4" level="2" auto gutter='0'/></Row>
+        <FormItem label="时间" prop="form4">
+          <DatePicker :value="formData.form4" type="date" placeholder="请选择时间" style="width: 100%" @on-change="dateChangeModal"></DatePicker>
         </FormItem>
-        <FormItem label="详细地址" prop="form5">
+        <FormItem label="时间段" prop="form5">
+          <dt-selectDate ref="date" @on-select="handleDateSelectModal"/>
+        </FormItem>
+        <FormItem label="区域" prop="form7">
+          <al-selector data-type="name" v-model="formData.form7" level="2" style="display: flow-root"/>
+        </FormItem>
+        <FormItem label="详细地址" prop="form8">
           <dt-AMapAddress ref="AMapAddress"/>
         </FormItem>
         <FormItem>
@@ -66,6 +76,7 @@
           key4: '',
           key5: '',
           key6: '',
+          key7: [],
         },
         columns: [
           { type: 'selection',width: 60},
@@ -82,6 +93,7 @@
           },
           { title: '操作', 
             key: 'operation' ,
+            width: 200,
             render: (h, params) => {
               return h('div', [
                   h('Button', {
@@ -117,17 +129,26 @@
             }
           }
         ],
+        itemId: 0,
         modal1: false,
         formData: {
           form1: '',
           form2: '',
           form3: '',
-          form4: [],
+          form4: '',
           form5: '',
+          form6: '',
+          form7: ['河北省', '张家口市', '怀来县'],
+          form8: '',
         },
         rule: {
           
         }
+      }
+    },
+    computed: {
+      modelTitle(){
+        return this.itemId?'编辑':'新增'
       }
     },
     mounted () {
@@ -136,10 +157,18 @@
       dateChange(val) {
         this.params.key4 = val;
       },
+      dateChangeModal(val) {
+        this.formData.key4 = val;
+      },
       handleDateSelect(val){
         console.log(val)
         this.params.key5 = val[0];
         this.params.key6 = val[1];
+      },
+      handleDateSelectModal(val){
+        console.log(val)
+        this.formData.key5 = val[0];
+        this.formData.key6 = val[1];
       },
       handleTableSelect(){
         //获取选中的列表项,默认返回id数组,支持传参getSelect('key1');
@@ -152,9 +181,16 @@
       },
       handleAdd(){
         this.modal1 = true;
+        this.itemId = 0;
+        this.$refs.form.resetFields();
+        this.$refs.date.setDate('','');
       },
       handleEdit(item){
         this.modal1 = true;
+        this.itemId = item.id;
+        this.$refs.form.resetFields();
+        // 设置时间段数据
+        this.$refs.date.setDate('2019-02-01','2019-02-28');
         // 设置地图点数据
         this.$refs.AMapAddress.setPosition({
           value: '腾讯大厦',

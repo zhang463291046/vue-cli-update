@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <h1>树型扩展</h1>
     <dt-tree :data="data" @handleAdd="handleAdd" @handleEdit="handleEdit" @handleDelete="handleDelete" style="width: 400px;"/>
     您点击了treeNode{{nodeData}}
   </div>

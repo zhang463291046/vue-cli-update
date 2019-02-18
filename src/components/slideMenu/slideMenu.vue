@@ -1,7 +1,7 @@
 <template>
   <div class="slide">
-    <div>
-      <img width="100%" height="60px" src="@/assets/logo.png" style="background: #2d8cf0;">
+    <div style="height:60px; background: #2d8cf0;text-align: center;">
+      <img width="200px" height="60px" src="@/assets/logo.png">
     </div>
     <Menu accordion :active-name="activeName" width="auto" @on-select="changeMenu">
       <div v-for="(item,index) in menuList" :key="index">
@@ -26,6 +26,7 @@
   export default {
     name: 'slideMenu',
     data() {
+      // var pagesRouter = JSON.parse(localStorage.getItem("menuInfo"))
       return {
         activeName: 'home',
         menuList: pagesRouter,
@@ -33,6 +34,7 @@
     },
     methods: {
       changeMenu(name){
+        localStorage.setItem("menuName",name)
         this.$router.push({name});
       }
     },

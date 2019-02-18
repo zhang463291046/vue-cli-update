@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <h1>待研发中......</h1>
     <dt-ul :model="data" style="width: 300px;"></dt-ul>
   </div>

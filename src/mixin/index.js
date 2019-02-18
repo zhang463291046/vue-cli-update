@@ -17,10 +17,19 @@ var mixin = {
 	  },
   	//删除数据,单条或者多条数据
     handleRemove(url,params={}) {
-      this.$http.post(url, params).then(res=>{
-        this.$Message.success('删除成功');
-        this.handleSearch();
-      })
+      this.$Modal.confirm({
+        title: '温馨提示',
+        content: '确定删除数据 ?',
+        onOk: () => {
+          this.$post(url, params).then(res=>{
+            this.$Message.success('删除成功');
+            this.handleSearch();
+          })
+        },
+        onCancel: () => {
+
+        }
+      });
     },
     formatDate(){
       console.log('---mixin---','混入对象')

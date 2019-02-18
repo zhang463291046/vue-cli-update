@@ -1,7 +1,7 @@
 <template>
   <span>
-    <DatePicker type="date" placeholder="请选择开始时间" style="width: 200px" :options="options1" @on-change="dateChange1"></DatePicker>
-    <DatePicker type="date" placeholder="请选择截止时间" style="width: 200px" :options="options2" @on-change="dateChange2"></DatePicker>
+    <DatePicker :value="start_time" type="date" placeholder="请选择开始时间" style="width: 150px" :options="options1" @on-change="dateChange1"></DatePicker>
+    <DatePicker :value="end_time" type="date" placeholder="请选择截止时间" style="width: 150px" :options="options2" @on-change="dateChange2"></DatePicker>
   </span>
 </template>
 

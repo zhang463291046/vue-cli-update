@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>待研发中......</h1>
+  <div class="page">
+    <h1>地址选择器</h1>
     <dt-alSelector :defaultValue="arr"></dt-alSelector>
   </div>
 </template>
@@ -8,12 +8,12 @@
   export default {
     data () {
       return {
-        arr: ['广东省','深圳市','宝安区']
+        arr: []
       }
     },
 
     mounted () {
-
+      this.arr = ['广东省','深圳市','宝安区']
     },
 
     methods: {
