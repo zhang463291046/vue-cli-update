@@ -51,7 +51,7 @@
           <dt-selectDate ref="date" @on-select="handleDateSelectModal"/>
         </FormItem>
         <FormItem label="区域" prop="form7">
-          <al-selector data-type="name" v-model="formData.form7" level="2" style="display: flow-root"/>
+          <al-selector ref="selector" data-type="name" v-model="formData.form7" level="2" style="display: flow-root"/>
         </FormItem>
         <FormItem label="详细地址" prop="form8">
           <dt-AMapAddress ref="AMapAddress"/>
@@ -191,6 +191,9 @@
         this.$refs.form.resetFields();
         // 设置时间段数据
         this.$refs.date.setDate('2019-02-01','2019-02-28');
+        // 设置地址选择器
+        this.$refs.selector.isInit = true;
+        this.formData.form7 = ['广东省','深圳市','宝安区'];
         // 设置地图点数据
         this.$refs.AMapAddress.setPosition({
           value: '腾讯大厦',

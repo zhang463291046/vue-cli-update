@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <h1>待研发中......</h1>
-    <dt-ul :model="data" style="width: 300px;"></dt-ul>
+    <h1>自定义树</h1>
+    <dt-ul :model="data" :can-edit="true" :isAddRoot="true" :open="true" @addRoot="addRoot" @addChild="addChild" @editModel="editModel" @deleteModel="deleteModel" style="width: 300px;"></dt-ul>
   </div>
 </template>
 <script>
@@ -10,34 +10,40 @@
       return {
         data:[
           {
-            isParent: true,
             id: 1,
             label: '1',
             checked: false,
-            isLastChild: false,
             children: [
               {
-                isParent: true,
-                id: 1,
-                label: '1',
+                id: 11,
+                label: '1-1',
                 checked: false,
-                isLastChild: false,
               },
               {
-                isParent: true,
-                id: 2,
-                label: '1',
+                id: 12,
+                label: '1-2',
                 checked: false,
-                isLastChild: false,
+                children: [
+                  {
+                    id: 121,
+                    label: '1-2-1',
+                    checked: false,
+                  },
+                  {
+                    id: 122,
+                    label: '1-2-2',
+                    checked: false,
+                    isLastChild: true,
+                  }
+                ]
               }
             ]  
           },
           {
-            isParent: true,
             id: 2,
             label: '2',
             checked: false,
-            isLastChild: false
+            isLastChild: true
           },
         ]
       }
@@ -48,7 +54,18 @@
     },
 
     methods: {
-    
+      addRoot(val){
+        console.log(val)
+      },
+      addChild(val){
+        console.log(val)
+      },
+      editModel(val){
+        console.log(val)
+      },
+      deleteModel(val){
+        console.log(val)
+      },
     },
   };
 </script>

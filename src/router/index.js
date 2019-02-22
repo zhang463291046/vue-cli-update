@@ -115,8 +115,14 @@ export const pagesRouter = [
       {
         path: 'index4',
         name: 'home3-index4',
-        title: '富文本编辑器',
+        title: '省市区地址2',
         component: resolve => require(['../pages/home3/index4'], resolve)
+      },
+      {
+        path: 'index5',
+        name: 'home3-index5',
+        title: '富文本编辑器',
+        component: resolve => require(['../pages/home3/index5'], resolve)
       },
     ]
   },

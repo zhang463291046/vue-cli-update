@@ -11,6 +11,7 @@
 <script>
 import area from './area'
 export default {
+  name:'selectArea',
   props: {
     name: String,
     value: String,
@@ -27,18 +28,31 @@ export default {
   }),
   computed: {
     opts () {
+      // 为省数据
       let rst = area
       this.disabled = false
+      // 如果为市或者区时查找children
       if (['city', 'district'].includes(this.type)) {
         if (this.province) {
-          rst = rst.filter(v => v.value === this.province)[0].children
+          const list = rst.filter(v => v.value === this.province)
+          if(list.length){
+            rst = list[0].children
+          }else{
+            rst = []
+          }
         } else {
           this.disabled = true
         }
       }
+      // 如果为区时查找children
       if ('district' === this.type) {
         if (this.city) {
-          rst = rst.filter(v => v.value === this.city)[0].children
+          const list = rst.filter(v => v.value === this.city)
+          if(list.length){
+            rst = list[0].children
+          }else{
+            rst = []
+          }
         } else {
           this.disabled = true
         }
